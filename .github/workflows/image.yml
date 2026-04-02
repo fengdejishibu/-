@@ -29,9 +29,9 @@ jobs:
 
       - name: Build and push Docker images
         run: |
-          docker compose build
-          registry="registry.cn-hangzhou.aliyuncs.com/pigx/"
-          for service in $(docker compose config --services); do
+          docker compose -f docker-compose.yml build
+          registry="crpi-tm42n24q2axxf8ej.cn-shenzhen.personal.cr.aliyuncs.com/pigx/"
+          for service in $(docker compose -f docker-compose.yml config --services); do
             if [ "$service" != "pig-redis" ]; then
               docker tag ${service}:latest ${registry}${service}:latest
               docker push ${registry}${service}:latest
