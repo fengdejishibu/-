@@ -32,7 +32,7 @@ jobs:
           COMPOSE_PROJECT_NAME: pig
         run: |
           docker compose -p pig -f docker-compose.yml build
-          registry="crpi-tm42n24q2axxf8ej.cn-shenzhen.personal.cr.aliyuncs.com/pigx/"
+          registry="crpi-tm42n24q2axxf8ej.cn-shenzhen.personal.cr.aliyuncs.com/tubuxitong/"
           for service in $(docker compose -p pig -f docker-compose.yml config --services); do
             if [ "$service" != "pig-redis" ]; then
               docker tag ${service}:latest ${registry}${service}:latest
