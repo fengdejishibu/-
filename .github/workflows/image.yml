@@ -33,11 +33,7 @@ jobs:
         run: |
           docker compose -p pig -f docker-compose.yml build
           registry="crpi-tm42n24q2axxf8ej.cn-shenzhen.personal.cr.aliyuncs.com/tubuxitong/"
-          for service in $(docker compose -p pig -f docker-compose.yml config --services); do
-            if [ "$service" != "pig-redis" ]; then
-              docker tag ${service}:latest ${registry}${service}:latest
-              docker push ${registry}${service}:latest
-            else
-              echo "Skipping pig-redis service"
-            fi
-          done
+          docker tag pig-register:latest ${registry}tubuxingzou:latest
+          docker tag pig-upms:latest ${registry}pig-upms:latest
+          docker push ${registry}tubuxingzou:latest
+          docker push ${registry}pig-upms:latest
