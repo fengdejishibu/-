@@ -82,48 +82,7 @@ services:
     networks:
       - spring_cloud_default
 
-  pig-monitor:
-    build:
-      context: ./pig-visual/pig-monitor
-    restart: always
-    ports:
-      - 5001:5001
-    container_name: pig-monitor
-    hostname: pig-monitor
-    image: pig-monitor
-    environment:
-      NACOS_HOST: pig-register
-    networks:
-      - spring_cloud_default
-
-  pig-codegen:
-    build:
-      context: ./pig-visual/pig-codegen
-    restart: always
-    container_name: pig-codegen
-    hostname: pig-codegen
-    image: pig-codegen
-    environment:
-      MYSQL_HOST: pig-mysql
-      REDIS_HOST: pig-redis
-      NACOS_HOST: pig-register
-    networks:
-      - spring_cloud_default
-
-  pig-quartz:
-    build:
-      context: ./pig-visual/pig-quartz
-    restart: always
-    image: pig-quartz
-    container_name: pig-quartz
-    environment:
-      MYSQL_HOST: pig-mysql
-      REDIS_HOST: pig-redis
-      NACOS_HOST: pig-register
-    networks:
-      - spring_cloud_default
-
 networks:
   spring_cloud_default:
-    name:  spring_cloud_default
+    name: spring_cloud_default
     driver: bridge
